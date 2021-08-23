@@ -22,6 +22,18 @@ module.exports = (sequelize, dataTypes) => {
     
     const Operation = sequelize.define(alias, cols, config);
 
-    return Operation
+    Operation.association = (models) => {
+        Operation.belongsTo(models.Type, {
+            as: 'types',
+            foreignKey: 'typId'
+        });
+
+        Operation.belongsTo(models.User, {
+            as: 'user',
+            foreignKey: 'userId'
+        });
+    };
+
+    return Operation;
     
-}
+};

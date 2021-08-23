@@ -14,14 +14,14 @@ module.exports = (sequelize, dataTypes) => {
     let config = {
         timestamps: false
     }
-    const Type = sequelize.define(alias, cols, config)
+    const Type = sequelize.define(alias, cols, config);
 
     Type.association = (models) => {
         Type.hasMany(models.Operation, {
-            as: 'operations',
+            as: 'typeOperations',
             foreignKey: 'typeId'
-        })
-    }
+        });
+    };
 
-    return Type
-}
+    return Type;
+};
