@@ -1,23 +1,27 @@
 module.exports = (sequelize, dataTypes) => {
-
-    return Operation = sequelize.define(
-        'Operation',
-        {
-            id: {
-                type: dataTypes.INTEGER,
-                primaryKey: true,
-                autoIncrement: true,
-            },
-            concept: {
-                type: dataTypes.STRING
-            },
-            date: {
-                type : dataTypes.DATE
-            },
+    
+    let alias = 'Operation';
+    
+    let cols = {
+        id: {
+            type: dataTypes.INTEGER,
+            primaryKey: true,
+            autoIncrement: true,
         },
-        {
-            timestamps: false
+        concept: {
+            type: dataTypes.STRING
+        },
+        date: {
+            type : dataTypes.DATE
         }
-    )
+    };
+    
+    let config = {
+        timestamps: false
+    };
+    
+    const Operation = sequelize.define(alias, cols, config);
 
+    return Operation
+    
 }
