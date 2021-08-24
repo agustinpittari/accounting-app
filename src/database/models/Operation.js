@@ -11,8 +11,18 @@ module.exports = (sequelize, dataTypes) => {
         concept: {
             type: dataTypes.STRING
         },
+        amount: {
+            type:dataTypes.INTEGER,
+            null: false
+        },
         date: {
             type : dataTypes.DATE
+        },
+        userId: {
+            type: dataTypes.INTEGER
+        },
+        typeId: {
+            type: dataTypes.INTEGER
         }
     };
     
@@ -22,10 +32,10 @@ module.exports = (sequelize, dataTypes) => {
     
     const Operation = sequelize.define(alias, cols, config);
 
-    Operation.association = (models) => {
+    Operation.associate = (models) => {
         Operation.belongsTo(models.Type, {
-            as: 'types',
-            foreignKey: 'typId'
+            as: 'type',
+            foreignKey: 'typeId'
         });
 
         Operation.belongsTo(models.User, {

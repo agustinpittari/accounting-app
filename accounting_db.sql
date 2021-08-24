@@ -1,3 +1,4 @@
+DROP DATABASE IF EXISTS accounting;
 CREATE DATABASE IF NOT EXISTS accounting;
 
 USE accounting;
@@ -17,6 +18,7 @@ CREATE TABLE IF NOT EXISTS users(
 CREATE TABLE IF NOT EXISTS operations (
 	id INT PRIMARY KEY auto_increment,
     concept VARCHAR(50),
+    amount INT NOT NULL,
     date DATE,
     typeId INT NOT NULL,
     userId INT NOT NULL,
@@ -24,4 +26,4 @@ CREATE TABLE IF NOT EXISTS operations (
     FOREIGN KEY (userId) REFERENCES users(id)
 );
 
-INSERT INTO types(name) VALUES('ingreso'), ('egreso')
+INSERT INTO types(name) VALUES('ingreso'), ('egreso');
